@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Your Travels!</title>
+
+</head>
+<body>
+    <a href="/logout/">Logout</a>
+    <h1>Hello {{request.session.name}}</h1>
+
+    <h3>Your Trip Schedules</h3>
+    <table>
+        <tr>
+            <th>Destination</th>
+            <th>Travel Start Date</th>
+            <th>Travel End Date</th>
+            <th>Plan</th>
+        </tr>
+        {% if travels %}
+        {% for travel in travels %}
+            {% for user in travel.users.all %}
+                {% if user.id == son.id %}
+            <tr>
+                <td><a href="/travels/destination/{{travel.id}}/">{{ travel.destination }}</a></td>
+                
+                <td>{{travel.traveldate_from}}</td>
+                <td>{{travel.traveldate_to}}</td>
+                <td>{{travel.description}}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        {% endfor %}
+        {% endif %}
+    </table>
+
+    <h3>Other User's Travel Plans</h3>
+    <table>
+            <tr>
+                <th>Destination</th>
+                <th>Travel Start Date</th>
+                <th>Travel End Date</th>
+                <th>Plan</th>
+                <th>Join</th>
+            </tr>
+            {% if travels2 %}
+            {% for travel in travels2 %}
+                
+                <tr>
+                    <td><a href="/travels/destination/{{travel.id}}/">{{ travel.destination }}</a></td>
+                    
+                    <td>{{travel.traveldate_from}}</td>
+                    <td>{{travel.traveldate_to}}</td>
+                    <td>{{travel.description}}</td>
+                    <td><a href="/travels/join/{{travel.id}}/">Join</a></td>
+                </tr>
+   
+                
+            {% endfor %}
+            {% endif %}
+        </table>
+    
+
+    <a href="/travels/add/">Add Travel Plan</a>
+</body>
+</html>

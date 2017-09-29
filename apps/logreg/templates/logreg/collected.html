@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Log AND Reg</title>
+</head>
+<body>
+    <h1>Register Here!</h1>
+    
+    {% if path == "Reg" %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+    <form action="/regging/" method="post">
+        {% csrf_token %}
+        {{formy}}
+        <input type="submit" value="Register">
+    </form>
+
+    <h1>Sign In</h1>
+    {% if path == "Log" %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+    <form action="/logging/" method="post">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" name="Submit">
+    </form>
+</body>
+</html>

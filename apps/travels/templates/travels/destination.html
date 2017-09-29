@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Destination</title>
+</head>
+<body>
+    <a href="/logout/">Logout</a>
+    <a href="/travels/">Home</a>
+    <h1>{{name.destination}}</h1>
+    <h3>Description: {{name.description}}</h3>
+    <h3>Travel date from: {{name.traveldate_from}}</h3>
+    <h3>Travel date to: {{name.traveldate_to}}</h3>
+    <h2>Other Users Joining</h2>
+        {% for user in yup %}
+            <p>{{user.name}}</p>
+        {% endfor %}
+
+</body>
+</html>
